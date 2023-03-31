@@ -1,17 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 body {
-
+    font-family: sans-serif;
+    background-color: beige;
 }
-
-/* nav {
-    border: 120px;
-} */
 
 main {
     padding: 16px;
+    position: relative;
 }
 
 footer {
-    padding: 24px 0 24px 0;
+    padding: 24px 0;
 }
 
 img {
@@ -20,5 +20,6 @@ img {
 
 nav {
     border-bottom: 1px;
+    border-style: dashed;
     padding: 16px;
 }
