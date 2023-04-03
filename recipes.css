@@ -1,45 +1,38 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-.my-grid{
-    display: inline-block;
-    grid-template-columns: max-content;
-    grid-template-rows: max-content;
-    border-collapse: collapse;
-    border-color: solid  black;
-    width: 100%;
-}
-.my-grid th,
-.my-grid td{
-    padding: 8px;
-    text-align: left;
-    border: 1px solid black;
-}
 
-.my-grid th{
-    background-color: beige;
-    color: #333;
-    text-align: center;
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
 header{
-    display: inline-flex;
-    border: 1px solid black;
-    background-color: rgba(219, 197, 197, 0.544) ;
-    padding: 1px;
-    box-shadow: 1px 1px 1px 2px rgba(0, 0, 0, 0.5);
+    background-color: #FF5A33;
+    padding: 5px;
 }
 
 body {
-    font-family: sans-serif;
-    background-color: rgb(246, 240, 240);
+    font-family: "Roboto", sans-serif;
+    background-color: rgb(255, 255, 255);
 }
 
 main {
+    display: grid;
     padding: 16px;
-    position: relative;
+}
+
+main > h1{
+    color: #B4CF66;
+}
+
+a {
+    color: #B4CF66;
+    text-decoration: none;
 }
 
 footer {
-    padding: 2px;
+    background-color: #B4CF66;
+    padding: 16px;
     font-size: small;
 }
 
@@ -47,15 +40,66 @@ img {
     height: 200px;
 }
 
+nav{
+    padding: auto;
+
+}
+
 nav a {
-    border-bottom: 1px solid black;
-    padding: 1px;
+    padding: 16px;
     color: black;
 }
 
 
+.my-grid{
+    display: grid;
+    grid-template-columns: repeat(4, auto);
 
-/* :hover.change-display{
-    display: block;
-    border-bottom: 1px;
-} */
+}
+thead{
+    grid-row: 1;
+}
+
+tbody{
+    grid-row: 2;
+}
+.my-table{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, auto);
+    grid-gap: 10px;
+}
+
+.my-table thead th{
+    font-weight: bold;
+}
+
+.my-table tbody tr:nth-child(odd){
+    background-color: #f2f2f2;
+}
+
+.my-table td, .my-table th{
+    padding: 10px;
+}
+
+ol{
+    padding: 16px;
+}
+
+h2{
+    padding-top: 24px;
+    padding-left: 24px;
+}
+
+
+/* for the tabs to select details of a recipe */
+.tabs{
+    background-color: #f8f8f8;
+    padding: 20px;
+    text-align: center;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.tabs:hover, .tabs:focus-within{
+    background-color: #f1ecec;
+}
