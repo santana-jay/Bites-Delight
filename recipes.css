@@ -47,7 +47,7 @@ nav{
 
 nav a {
     padding: 16px;
-    color: black;
+    color: white;
 }
 
 
@@ -58,6 +58,8 @@ nav a {
 }
 thead{
     grid-row: 1;
+    padding-top: 16px;
+    padding-bottom: 0;
 }
 
 tbody{
@@ -88,7 +90,7 @@ ol{
 
 h2{
     padding-top: 24px;
-    padding-left: 24px;
+    padding-left: 2px;
 }
 
 
