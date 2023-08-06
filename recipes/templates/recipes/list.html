@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+<main>
+    <h1 class='w3-center w3-padding-16'>Bites Delight</h1>
+    <h2>All the food that's fit to eat</h2>
+    <div class="my-grid">
+        {% for recipe in recipe_list %}
+        <div class="tabs">
+            <h3 class='img'>
+                <a href="{% url 'show_recipe' recipe.id %}">{{ recipe.title }}</a>
+            </h3>
+            <p>{{ recipe.created_on|date:"F j, Y"}}</p>
+            <img src="{{ recipe.picture|default:"https://via.placeholder.com/150" }}">
+            <div>4.3 Stars</div>
+        </div>
+        {% empty %}
+        {% endfor %}
+    </div>
+</main>
+{% endblock content %}

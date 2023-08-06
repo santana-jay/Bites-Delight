@@ -1,0 +1,43 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}{% endblock title%}
+    <title>
+        Bites Delight
+    </title>
+    <link rel="stylesheet" href="{% static "css/recipes.css" %}">
+    <div class='header'>
+        <header>
+            <nav>
+                <a href="{% url "main_page" %}">Home</a>
+                <a href="{% url "create_recipe" %}">Create a New Recipe</a>
+                <a href="{% url "about" %}">About</a>
+                {% if user.is_authenticated %}
+                Hello, {{ user.username }}
+                <a href='{% url 'user_logout' %}'> Logout</a>
+                {% else %}
+                <a href='{% url 'signup' %}'>Sign up</a>
+                <a href='{% url 'user_login' %}'>Login</a>
+                {% endif %}
+            </nav>
+        </header>
+    </div>
+</head>
+<body>
+    <div class='content'>
+        {% block content %}
+        {% endblock content %}
+    </div>
+
+</body>
+<div class='footer'>
+    <footer>
+        Made with love by Bites Delight
+    </footer>
+</div>
+</html>

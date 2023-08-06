@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+<title>
+    Create a Recipe -
+    Bites Delight
+</title>
+{% endblock title %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static "css/login.css" %}">
+<html lang="en" dir="ltr">
+    <body class='container'>
+        <div class='login-box'>
+            <h2>Create a Recipe</h2>
+            <form method="post">
+                {% csrf_token %}
+                <label>Title</label>
+                <div class="user-box">
+                    <input
+                    type="{{ form.title.widget.input_type }}"
+                    name="{{ form.title.html_name }}"
+                    class="form-control"
+                    required>
+                </div>
+                <label>Picture Url</label>
+                <div class="user-box">
+                    <input
+                    type="{{ form.picture.widget.input_type }}"
+                    name="{{ form.picture.html_name }}"
+                    class="form-control"
+                    required>
+                </div>
+                <label>Description</label>
+                <div class="user-box">
+                    <textarea
+                    name="{{ form.description.html_name }}"
+                    class="form-control"
+                    rows="4"
+                    required>{{ form.description.value|default:'' }}</textarea>
+                </div>
+                <a href="#">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </a>
+            </form>
+        </div>
+    </body>
+</html>
+{% endblock content %}

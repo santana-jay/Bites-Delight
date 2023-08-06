@@ -1,0 +1,192 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+<title>Edit Recipe - Bites Delight</title>
+{% endblock title %}
+
+{% block content %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="{% static "css/edit.css" %}">
+<body>
+    <div class='container'>
+        <h2>Edit Recipe</h2>
+        <h2>{{ recipe.title }}</h2>
+        <form class="form-container" method="post" id="recipe">
+            {% csrf_token %}
+
+            {% for field in form %}
+                <div class="login-box">
+                    <div><label>{{ field.label }}</label></div>
+                    <div class="user-box">
+                        <div>{{ field }}</div>
+                    </div>
+                </div>
+            {% endfor %}
+
+            <h3>Steps:</h3>
+            {% for step in recipe.steps.all %}
+                <div class="stepForms login-box">
+                    <label>Step</label>
+                    <input type="number" name="step-count-{{ step.id }}" value="{{ step.step_number }}">
+                    <input type="text" name="step-instruction-{{ step.id }}" value="{{ step.instruction }}">
+                </div>
+            {% endfor %}
+
+            <button id="addStepButton" type="button" onclick="addStepForm()">Add Step</button>
+
+            <h3>Ingredients:</h3>
+            {% for ing in recipe.ingredients.all %}
+                <div class="login-box">
+                    {% comment %} <label>Ingredient</label> {% endcomment %}
+                    <label>Amount</label>
+                    <input type="number" name="ingredient-amount-{{ ing.id }}" value="{{ ing.amount }}">
+                    <label>Food Item</label>
+                    <input type="text" name="ingredient-item-{{ ing.id }}" value="{{ ing.food_item }}">
+                </div>
+            {% endfor %}
+
+            <button type="button" onclick="addIngredientForm()">Add Ingredient</button>
+
+            <div class="submit-button">
+            <a href="#">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </a>
+            </div>
+        </form>
+    </div>
+</body>
+
+<script>
+    function addStepForm() {
+        // Get the current number of steps
+        const currentSteps = $('.stepForms').length;
+        // Calculate the step number for the new step
+        const newStepNumber = currentSteps + 1;
+        const stepFormHtml = `
+            <div class="login-box">
+                {% comment %} <label>New Step</label> {% endcomment %}
+                <label> Step </label>
+                <input type="number" name="step-count-new-${newStepNumber}" placeholder="Step Number" value="${newStepNumber}">
+                <input type="text" name="step-instruction-new-${newStepNumber}" placeholder="Instruction">
+            </div>
+        `;
+        $('.stepForms.login-box').append(stepFormHtml);
+    }
+
+    function addIngredientForm() {
+        const ingredientFormHtml = `
+            <div class="login-box">
+                <label>Ingredient</label>
+                <input type="number" name="ingredient-amount-new-1" placeholder="Amount">
+                <input type="text" name="ingredient-item-new-1" placeholder="Food Item">
+            </div>
+        `;
+        $('.login-box:last').after(ingredientFormHtml);
+    }
+</script>
+
+{% endblock content %}
+
+
+{% comment %} {% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+<title>Edit Recipe - Bites Delight</title>
+{% endblock title %}
+
+{% block content %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="{% static "css/edit.css" %}">
+<body>
+    <div class='container'>
+        <h2>Edit Recipe</h2>
+        <h2>{{ recipe.title }}</h2>
+        <form method="post" id="recipe">
+            {% csrf_token %}
+
+            {% for field in form %}
+                <div class="login-box">
+                    <div><label>{{ field.label }}</label></div>
+                    <div class="user-box">
+                        <div>{{ field }}</div>
+                    </div>
+                </div>
+            {% endfor %}
+
+            <h3>Steps:</h3>
+            {% for step in recipe.steps.all %}
+                <div class="stepForms login-box">
+                    <label>Step {{ step.step_number }}</label>
+                    {{ step.instruction }}
+                </div>
+            {% endfor %}
+
+            {% for step in step_form %}
+                <div class="stepForms login-box">
+                    <label>{{ step.label }}</label>
+                    <div>{{ step }}</div>
+                </div>
+            {% endfor %}
+            <button type="button" onclick="addStepForm()">Add Step</button>
+
+            <h3>Ingredients:</h3>
+            {% for ing in recipe.ingredients.all %}
+                <div class="login-box">
+                    <label>{{ ing.amount }}</label>
+                    {{ ing.food_item }}
+                </div>
+            {% endfor %}
+
+            {% for ing in ingredient_form %}
+                <div class="login-box">
+                    <label>{{ ing.label }}</label>
+                    <div>{{ ing }}</div>
+                </div>
+            {% endfor %}
+            <button type="button" onclick="addIngredientForm()">Add Ingredient</button>
+
+            <a href="#">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <button type="submit">Submit</button>
+            </a>
+        </form>
+    </div>
+</body>
+
+<script>
+    let stepCount = {{ step_form.step_count|length }};
+    function addStepForm() {
+        const stepFormHtml = `
+            <div class="stepForms login-box">
+                <label>Step {{ step.step_number }}</label>
+                <div>{{ step.instruction }}</div>
+                <div><input type="text" name="step-${stepCount}" id="id_step-${stepCount}"></div>
+            </div>
+        `;
+        $('.login-box:last').after(stepFormHtml);
+        stepCount++;
+    }
+    let ingredientCount = {{ ingredient_form.all|length }};
+    function addIngredientForm() {
+        const ingredientFormHtml = `
+            <div class="login-box">
+                <label>Amount {{ ing.amount }}</label>
+                <div>Food Item {{ ing.food_item }}</div>
+                <div><input type="text" name="amount-${ingredientCount}" id="id_amount-${ingredientCount}"></div>
+            </div>
+        `;
+        $('.login-box:last').before(ingredientFormHtml);
+        ingredientCount++;
+    }
+</script>
+
+{% endblock content %} {% endcomment %}

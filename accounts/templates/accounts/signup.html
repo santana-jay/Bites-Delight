@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Sign Up! - Bites Delight
+{% endblock title %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+<link rel="stylesheet" href="{% static "css/login.css" %}">
+<html lang="en" dir="ltr">
+<body class='container'>
+    <div class="login-box">
+        <h2>Sign Up</h2>
+        <form method='post'>
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="user-box">
+                {{ field }}
+                <label>{{ field.label }}</label>
+            </div>
+            {% endfor %}
+            <a href="#">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+            </a>
+        </form>
+    </div>
+</body>
+</html>
+{% endblock content %}

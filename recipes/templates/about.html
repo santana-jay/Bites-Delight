@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Personal Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #FFFFFF;
+            margin: 0;
+            padding: 0;
+        }
+        header, footer {
+            background-color: #282828;
+            padding: 20px;
+            text-align: center;
+        }
+        .carousel {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+        }
+        .carousel img {
+            scroll-snap-align: start;
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            max-width: 500px;
+            margin: 50px auto;
+        }
+        .contact-form input, .contact-form textarea {
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            background-color: #333;
+            color: #FFF;
+        }
+        .contact-form button {
+            padding: 10px 20px;
+            background-color: #FF4500;
+            border: none;
+            color: #FFF;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .contact-form button:hover {
+            background-color: #FF6347;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Your Name</h1>
+        <p>Web Developer | Designer | Your Profession</p>
+    </header>
+
+    <section>
+        <h2>About Me</h2>
+        <p>Short introduction about yourself. Your background, skills, and what you're passionate about.</p>
+    </section>
+
+    <section>
+        <h2>Portfolio</h2>
+        <div class="carousel">
+            <img src="path_to_image1.jpg" alt="Project 1">
+            <img src="path_to_image2.jpg" alt="Project 2">
+            <!-- Add more images or videos as needed -->
+        </div>
+    </section>
+
+    <section>
+        <h2>Contact Me</h2>
+        <form class="contact-form">
+            <input type="text" placeholder="Name">
+            <input type="email" placeholder="Email">
+            <textarea placeholder="Message"></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>Connect with me:</p>
+        <a href="your_twitter_link">Twitter</a> |
+        <a href="your_linkedin_link">LinkedIn</a> |
+        <a href="your_github_link">GitHub</a>
+    </footer>
+
+    <!-- Add any JavaScript for animations or interactivity here -->
+
+</body>
+</html>
