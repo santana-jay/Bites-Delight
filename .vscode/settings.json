@@ -1,0 +1,14 @@
+{
+    "files.autoSave": "onWindowChange",
+    "livePreview.showServerStatusNotifications": false,
+    "liveServer.settings.host": "localhost:8000",
+    "liveServer.settings.fullReload": false,
+    "liveServer.settings.proxy": {
+        "proxyUri": "http://localhost:8000/"
+    },
+    "sonarlint.connectedMode.project": {
+        "connectionId": "",
+        "projectKey": ""
+    },
+    "compile-hero.disable-compile-files-on-did-save-code": false
+}

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Login! - Bites Delight
+{% endblock title %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static "css/login.css" %}">
+<html lang="en" dir="ltr">
+<body class='container'>
+
+    <div class="login-box">
+        <h2>Login</h2>
+        <form method='post' action="{% url 'user_login' %}">
+            {% csrf_token %}
+            <div class="user-box">
+                <input
+                type="{{ form.username.widget.input_type }}"
+                name="{{ form.username.html_name }}"
+                class="form-control"
+                required>
+            <label>Username</label>
+            </div>
+            <div class="user-box">
+                <input
+                type="{{ form.password.widget.input_type }}"
+                name="{{ form.password.html_name }}"
+                class="form-control"
+                required>
+            <label>Password</label>
+        </div>
+        <a href="#">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </a>
+        </form>
+    </div>
+
+</body>
+</html>
+{% endblock content %}
